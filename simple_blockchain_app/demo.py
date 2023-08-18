@@ -1,19 +1,18 @@
-#!/usr/bin/python
-"""
-This is an example how to simulate a client server environment.
-"""
+      
 from mininet.net import Containernet
-from mininet.node import Controller
+from mininet.node import Controller, RemoteController
 from mininet.cli import CLI
 from mininet.link import TCLink
 from mininet.log import info, setLogLevel
-
+import socket
 setLogLevel('info')
 
-net = Containernet(controller=Controller)
-net.addController('c0')
 
-info('*** Adding server and client container\n')
+
+net=Containernet()
+info('*** Adding controller\n')
+c0 = RemoteController( 'c0' , ip=socket.gethostbyname("onos"), port=6633)
+net.addController(c0)
 server = net.addDocker('server', ip='10.0.0.251', dcmd="python app.py", dimage="test_server:latest")
 client = net.addDocker('client', ip='10.0.0.252', dimage="test_client:latest")
 

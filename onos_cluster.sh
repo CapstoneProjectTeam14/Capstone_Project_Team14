@@ -48,10 +48,10 @@ docker restart atomix-4
 docker pull onosproject/onos:2.2.2
 
 # Run four ONOS docker instances
-docker run -t -d --name onos1 onosproject/onos:2.2.2
-docker run -t -d --name onos2 onosproject/onos:2.2.2
-docker run -t -d --name onos3 onosproject/onos:2.2.2
-docker run -t -d --name onos4 onosproject/onos:2.2.2
+docker run -t -d -p 8181:8181 -p 8101:8101 -p 5005:5005 -p 830:830 --name onos1 onosproject/onos:2.2.2 
+docker run -t -d --name onos2 onosproject/onos:2.2.2 
+docker run -t -d --name onos3 onosproject/onos:2.2.2 
+docker run -t -d --name onos4 onosproject/onos:2.2.2 
 
 # Check docker IP of ONOS instances
 docker inspect onos1 | grep -i ipaddress

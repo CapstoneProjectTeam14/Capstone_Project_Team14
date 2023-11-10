@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the ONOS controller REST API endpoint
-ONOS_HOST="http://172.17.0.2:8181"
+ONOS_HOST="http://localhost:8181"
 APP_NAME_1="org.onosproject.fwd"
 APP_NAME_2="org.onosproject.openflow"
 

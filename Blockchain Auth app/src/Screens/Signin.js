@@ -1,7 +1,7 @@
 import * as React from "react";
 import { loadBlockchainData, loadWeb3 } from "../Web3helpers";
 import { useNavigate } from "react-router-dom";
-import logo from '../logo.svg';
+import logo from '../logo.svg'
 
 export default function SignIn() {
   const [email, setEmail] = React.useState("");
@@ -33,7 +33,7 @@ export default function SignIn() {
         localStorage.setItem("account", accounts);
         navigate("/Home");
       } else {
-        alert("wrong user credintinals or please signup");
+        alert("wrong user credintials or please signup");
       }
     } catch (error) {
       alert(error.message);

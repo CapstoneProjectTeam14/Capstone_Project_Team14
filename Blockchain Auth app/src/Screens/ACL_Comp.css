@@ -1,0 +1,95 @@
+
+div {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    display: flex;
+  }
+
+  .add-rule-section {
+    flex:1;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    margin-right: 20px;
+    display: block;
+    transition: 1s;
+    background-color: rgb(189, 189, 189,0.6 );
+  }
+  .add-rule-section:hover{
+    border: 1px solid #000000;
+  }
+
+  .existing-rules-section {
+    flex:2;
+    display: inline;
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+
+  p {
+    margin: 5px 0;
+  }
+
+  label > input[type="radio"]:checked + span {
+    font-weight: bold;
+    color: #0074d9;
+  }
+  .acl-rule-item {
+    background-color: rgb(239, 199, 199);
+    }
+
+  .acl-rule-item .hidden-info {
+    display: none;
+    background-color: rgb(239, 199, 199);
+  }
+
+  .acl-rule-item:hover .hidden-info {
+    display: block;
+    background-color: rgb(239, 199, 199);
+  }

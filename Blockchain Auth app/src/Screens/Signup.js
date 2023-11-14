@@ -1,6 +1,6 @@
 import * as React from "react";
 import { loadBlockchainData, loadWeb3 } from "../Web3helpers";
-import logo from '../logo.svg';
+import logo from '../team14.jpeg';
 import { useNavigate } from "react-router-dom";
 export default function SignUp() {
   const [username, setUsername] = React.useState("");

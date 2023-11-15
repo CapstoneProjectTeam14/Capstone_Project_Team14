@@ -10,6 +10,34 @@ const port = 3002;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Dummy data to store ACL rules
+let aclRules = [];
+
+app.post("/AclRules", async (req, res) => {
+ 
+});
+
+app.get("/AclRules", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "http://172.17.0.6:8181/onos/v1/acl/rules",
+      {
+        auth: {
+          username: "onos",
+          password: "rocks",
+        },
+      }
+    );
+
+    const aclRules = response.data || [];
+
+    res.json({ aclRules });
+  } catch (error) {
+    console.error("Error fetching ONOS ACL rules:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 app.get("/onos-flows", async (req, res) => {
   try {
     // Fetch ONOS flow data from the specified URL
@@ -31,7 +59,7 @@ app.get("/onos-flows", async (req, res) => {
 app.get("/onos-data", async (req, res) => {
   try {
     // Fetch ONOS node data from the specified URL
-    const response = await axios.get("http://172.17.0.6:8181/onos/v1/cluster", {
+    const response = await axios.get("http://172.17.0.8:8181/onos/v1/cluster", {
       auth: {
         username: "onos",
         password: "rocks",

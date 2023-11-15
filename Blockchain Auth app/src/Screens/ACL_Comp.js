@@ -20,6 +20,8 @@ class ACL_Comp extends Component {
     },
   };
 
+
+
   componentDidMount() {
     this.fetchAclRules();
   }
@@ -32,6 +34,11 @@ class ACL_Comp extends Component {
       },
     }));
   };
+
+  submitAcl = () =>{
+    axios.post("localhost:3002/AclRules")
+  }
+
   fetchAclRules = () => {
     axios.get(this.state.IPFetch) //TBR
       .then((response) => {
@@ -109,16 +116,6 @@ class ACL_Comp extends Component {
       />
     </div>
     <div>
-      <label>Destination IP:</label>
-      <input
-        type="text"
-        placeholder='Destination IP'
-        name="dstIp"
-        value={this.state.newRule.dstIp}
-        onChange={this.handleInput}
-      />
-    </div>
-    <div>
       <label>Source MAC:</label>
       <input
         type="text"
@@ -159,26 +156,6 @@ class ACL_Comp extends Component {
       />
     </div>
     <div>
-      <label>Destination Transport Port:</label>
-      <input
-        type="text"
-        placeholder='Destination Transport Port'
-        name="dstTpPort"
-        value={Math.max(0,this.state.newRule.dstTpPort)}
-        onChange={this.handleInput}
-      />
-    </div>
-    <div>
-      <label>Source Transport Port:</label>
-      <input
-        type="number"
-        placeholder='Source Transport Port'
-        name="srcTpPort"
-        value={Math.max(0,this.state.newRule.srcTpPort)}
-        onChange={this.handleInput}
-      />
-    </div>
-    <div>
       <h2>Action:</h2>
       <div>
         <label>
@@ -206,45 +183,11 @@ class ACL_Comp extends Component {
       </div>
     </div>
   </div>
-          <button onClick={this.addAclRule}>Add Rule</button>
+          <button onClick={this.submitAcl}>Add Rule</button>
           </div>
-    <div className='existing-rules-section'>
-        <h2>Existing Rules</h2>
-        <br/>
-        <div>
-      <label>Controller URL To Fetch tables:</label>
-      <input
-        type="text"
-        placeholder='https://172.0.0.2/../rules'
-        name="IPFetch"
-        value={this.state.IPFetch}
-        onChange={this.handleInput2}
-      />
-    <button onClick={this.fetchAclRules}>Fetch</button>
-    </div>
     <br/>
-    <ul>
-  {this.state.aclRules ? (
-    this.state.aclRules.map((rule) => (
-      <li key={rule.id} style={{ backgroundColor: 'rgb(239, 199, 199)' }} className="acl-rule-item">
-        <p>Source IP: {rule.srcIp}</p>
-        <p>Destination IP: {rule.dstIp}</p>
-        <p className="hidden-info">Source MAC: {rule.srcMac}</p>
-        <p className="hidden-info">Destination MAC: {rule.dstMac}</p>
-        <p className="hidden-info">DSCP: {rule.dscp}</p>
-        <p className="hidden-info">IP Protocol: {rule.ipProto}</p>
-        <p className="hidden-info">Destination TP Port: {rule.dstTpPort}</p>
-        <p className="hidden-info">Source TP Port: {rule.srcTpPort}</p>
-        <p>Action: {rule.action}</p>
-      </li>
-    ))
-  ) : (
-    <p>ACL Tables not fetched.</p>
-  )}
-    </ul>
 
         </div>
-      </div>
     );
   }
 }
